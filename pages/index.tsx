@@ -3,8 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { useState } from 'react';
+import Post from '../components/Post/Post';
 
-interface Post { 
+export interface Post { 
   title: string,
   description?: string,
   author?: string,
@@ -12,7 +13,7 @@ interface Post {
 }
 
 const initialPosts = [
-  {title: 'post1'},{title: 'post2'}
+  {title: 'post1'},{title: 'post2'},{title: 'post3'},{title: 'post4'},{title: 'post5', description: 'descc'}
 ]
 
 const Home: NextPage = () => {
@@ -26,7 +27,7 @@ const Home: NextPage = () => {
       </Head>
       <div className={styles.container}>
         {posts.map((post) => (
-          <h1>{post.title}</h1>
+          <Post post={post}/>
         ))}
       </div>
 

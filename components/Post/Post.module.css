@@ -1,0 +1,9 @@
+.container {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 2rem;
+    max-height: 20rem;
+    min-height: 15rem;
+    min-width: 15rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
