@@ -1,9 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useState } from 'react';
 import Post from '../components/Post/Post';
+import { useQuery, gql } from '@apollo/client';
 
 export interface Post { 
   title: string,
@@ -12,12 +11,18 @@ export interface Post {
   likes?: string
 }
 
-const initialPosts = [
-  {title: 'post1'},{title: 'post2'},{title: 'post3'},{title: 'post4'},{title: 'post5', description: 'descc'}
-]
+const GET_POSTS = gql`
+  query {
+    getPosts {
+      title
+      description
+    }
+  }
+`;
 
 const Home: NextPage = () => {
-  const [posts, setPosts] = useState<Post[]>(initialPosts);
+  const { loading, error, data } = useQuery(GET_POSTS);
+
   return (
     <div className={styles.body}>
       <Head>
@@ -26,13 +31,15 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.container}>
-        {posts.map((post) => (
+        {data?.getPosts.map((post: Post) => (
           <Post post={post}/>
         ))}
+        {loading && <h1>Loading</h1>}
+        {error && <h1>{JSON.stringify(error)}</h1>}
       </div>
 
     </div>
   )
 }
 
-export default Home
+export default Home;
