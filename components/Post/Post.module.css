@@ -8,7 +8,11 @@
 }
 
 .postinfocontainer {
-    padding: 0rem 2rem;
+    padding: 1.5rem 2rem;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .postimage {
@@ -25,10 +29,25 @@
     cursor: pointer;
     padding: 0.3rem 0.5rem;
     transition: all 0.1s ease-in-out;
+    width: 30%;
 }
 
 .container:hover button {
     font-weight: bold;
+}
+
+.title {
+    margin: 0;
+    padding: 0;
+}
+
+.description {
+    font-size: 0.8rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1300px) {

@@ -1,27 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { gql, ApolloServer } from "apollo-server-micro";
+import { ApolloServer } from "apollo-server-micro";
 import mongoose from 'mongoose';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
-import Post from '../../models/Post';
+import resolvers from '../../utils/resolvers';
+import typeDefs from '../../utils/typeDefs';
 
 const connectMongoDB = async () => mongoose.connect(process.env.MONGO_DB!);
-
-const typeDefs = gql`
-    type Query {
-        getPosts: [Post]
-    }
-    type Post { 
-        title: String,
-        description: String
-    }
-`
-const resolvers = {
-    Query: {
-      getPosts: async () => {
-        return await Post.find({});
-      },
-    },
-  };
 
 const apolloServer = new ApolloServer({
     typeDefs,
