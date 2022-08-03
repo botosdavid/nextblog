@@ -5,9 +5,11 @@ const typeDefs = gql`
         getPosts: [Post]
     }
     type Post { 
+        _id: String,
         title: String,
         description: String,
-        image: String
+        image: String,
+        createdAt: String,
     }
     type Mutation { 
         addPost(title: String!, description: String!, image: String!): String!

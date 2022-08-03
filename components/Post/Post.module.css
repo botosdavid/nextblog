@@ -50,6 +50,17 @@
     overflow: hidden;
 }
 
+.postheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeago {
+    color: rgb(114, 114, 114);
+    font-size: 0.7rem;
+}
+
 @media screen and (max-width: 1300px) {
     .container {
         width: 45%;

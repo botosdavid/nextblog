@@ -3,7 +3,8 @@ import Post from '../models/Post';
 const resolvers = {
     Query: {
         getPosts: async () => {
-        return await Post.find({});
+            return await Post.find({})
+                .sort({_id: -1});
         },
     },
     Mutation: {

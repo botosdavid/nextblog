@@ -6,6 +6,8 @@ export const GET_POSTS = gql`
       title
       description
       image
+      _id
+      createdAt
     }
   }
 `;

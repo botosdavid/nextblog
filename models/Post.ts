@@ -4,10 +4,11 @@ const postSchema = new Schema({
     title: String,
     description: String,
     image: String,
+    createdAt: String,
     // author: String,
-    // date: Date,
 })
 
+postSchema.set('timestamps', true);
 const Post = models.Post || model('Post', postSchema);
 
 export default Post;

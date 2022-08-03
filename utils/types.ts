@@ -1,8 +1,10 @@
 export interface Post { 
     __typename: string,
+    _id: string,
     title: string,
     description: string,
     image: string,
+    createdAt: string,
     author?: string,
     likes?: string
 }

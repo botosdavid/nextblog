@@ -6,6 +6,10 @@ import styles from './Postinput.module.css';
 import {PostInputActionType} from '../../utils/types';
 import type { PostInput, PostInputAction } from '../../utils/types';
 
+const isValidImage = (url: string) => {
+   return (url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null);
+}
+
 const initialState: PostInput = {
     title: '',
     description: '',
@@ -59,7 +63,7 @@ const Postinput = () => {
                     Post
                 </button>
                 <input className={styles.titleinput}
-                    placeholder=" Post Title" 
+                    placeholder=" Post Title"
                     value={state.title} 
                     onChange={(e) => 
                         dispatch({
@@ -91,6 +95,9 @@ const Postinput = () => {
                         })
                     }
                 />
+            }
+            {state.image && isValidImage(state.image) && 
+                <img src={state.image} className={styles.imageupload}/>
             }
       </div>
     )

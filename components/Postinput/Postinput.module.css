@@ -38,3 +38,8 @@
     height: 5rem;
     translate: all 1s ease-in-out;
 }
+
+.imageupload {
+    border-radius: 1rem;
+    max-height: 20rem;
+}
