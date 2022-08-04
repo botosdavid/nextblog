@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useReducer } from 'react';
 import { ADD_POST } from '../../utils/queries';
 import styles from './Postinput.module.css';
-import {PostInputActionType} from '../../utils/types';
+import {Category, PostInputActionType} from '../../utils/types';
 import type { PostInput, PostInputAction } from '../../utils/types';
 
 const isValidImage = (url: string) => {
@@ -72,6 +72,11 @@ const Postinput = () => {
                         })
                     }
                 />
+                <select className={styles.select}>
+                    { Object.values(Category).map((key) => (
+                    <option value={key}>{key}</option>
+                    ))}
+                </select>
             </div>
             {state.title && 
                 <textarea className={styles.textarea}

@@ -5,9 +5,15 @@
 
 .container {
   background-color: white;
+  display: flex;
+  border-radius: 1rem;
+  padding: 3rem;
+}
+
+.postscontainer {
+  background-color: white;
   border-radius: 1rem;
   min-height: 35rem;
-  padding: 3rem;
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
@@ -18,4 +24,17 @@
   .body {
     padding: 2rem;
   }
+}
+
+.sidebarcontainer {
+  width: 100%;
+  color:rgb(145, 145, 145)
+}
+
+.sidebarcontainer h3 {
+  cursor: pointer;
+}
+
+.selected {
+  color: black;
 }

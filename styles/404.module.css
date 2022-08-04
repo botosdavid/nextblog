@@ -1,0 +1,39 @@
+.body {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 5rem;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.h1 {
+    font-size: 5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.h3 {
+    font-size: 0.9rem;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.link {
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+}
+

@@ -5,6 +5,7 @@ export interface Post {
     description: string,
     image: string,
     createdAt: string,
+    category: Category
     author?: string,
     likes?: string
 }
@@ -25,4 +26,11 @@ export enum PostInputActionType {
 export interface PostInputAction {
     type: PostInputActionType,
     payload: string
+}
+
+export enum Category {
+    ALL = 'All',
+    SPORT = 'Sport',
+    FOOD = 'Food',
+    TECH = 'Tech',
 }

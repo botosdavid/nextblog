@@ -6,12 +6,22 @@ import {client} from './_app';
 import type { Post as PostType }  from '../utils/types';
 import { GET_POSTS } from '../utils/queries';
 import Postinput from '../components/Postinput/Postinput';
+import { useMemo, useState } from 'react';
+import { Category } from '../utils/types';
 
 interface HomeProps { 
   posts: PostType[]
 }
 
+const filter = (posts: PostType[], category: Category) => {
+  if(category === Category.ALL) return posts;
+  return posts.filter((post) => post.category === category);
+}
+
 const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
+  const [category, setCategory] = useState(Category.ALL);
+  const filteredPosts = useMemo(() => filter(posts, category), [category]);
+
   return (
     <div className={styles.body}>
       <Head>
@@ -21,12 +31,23 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
       </Head>
 
       <Postinput />
-      
       <div className={styles.container}>
-        {posts?.map((post: PostType, index) => (
-          <Post post={post} key={index}/>
-        ))}
+        <div className={styles.sidebarcontainer}>
+          { Object.values(Category).map((key) => (
+            <h3 onClick={() => setCategory(key)}
+              className={(category===key ? styles.selected : '') }>
+                {key}
+              </h3>
+          ))}
+        </div>
+
+        <div className={styles.postscontainer}>
+          {filteredPosts?.map((post: PostType, index) => (
+            <Post post={post} key={index}/>
+          ))}
+        </div>
       </div>
+      
     </div>
   )
 }

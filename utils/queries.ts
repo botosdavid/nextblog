@@ -8,6 +8,7 @@ export const GET_POSTS = gql`
       image
       _id
       createdAt
+      category
     }
   }
 `;

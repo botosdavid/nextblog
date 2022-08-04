@@ -5,6 +5,7 @@ const postSchema = new Schema({
     description: String,
     image: String,
     createdAt: String,
+    category: String,
     // author: String,
 })
 

@@ -10,6 +10,7 @@ const typeDefs = gql`
         description: String,
         image: String,
         createdAt: String,
+        category: String,
     }
     type Mutation { 
         addPost(title: String!, description: String!, image: String!): String!

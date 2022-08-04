@@ -15,10 +15,10 @@ const defaultOptions: DefaultOptions = {
 }
 
 export const client = new ApolloClient({
-    uri: 'http://localhost:3000/api/graphql',
-    cache: new InMemoryCache(),
-    defaultOptions: defaultOptions
-  });
+  uri: 'http://localhost:3000/api/graphql',
+  cache: new InMemoryCache(),
+  defaultOptions: defaultOptions
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
