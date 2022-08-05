@@ -6,6 +6,9 @@ const resolvers = {
             return await Post.find({})
                 .sort({_id: -1});
         },
+        getPost: async (_: any, { id }: any) => {
+            return await Post.findById(id);
+        },
     },
     Mutation: {
         addPost: async (parent: any, args: any) => {

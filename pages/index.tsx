@@ -48,7 +48,6 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
           ))}
         </div>
       </div>
-      
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { gql } from "apollo-server-micro";
 const typeDefs = gql`
     type Query {
         getPosts: [Post]
+        getPost(id: String): Post
     }
     type Post { 
         _id: String,

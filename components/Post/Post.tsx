@@ -17,7 +17,7 @@ const Post = ({ post }: PostProps) => {
                 <img src={post?.image || defaultPostImage} className={styles.postimage}/>
                 <div className={styles.postinfocontainer}>
                     <div className={styles.postheader}>
-                        <h3 className={styles.title}>{post?.title}</h3>
+                        <h4 className={styles.title}>{post?.title}</h4>
                         <TimeAgo date={post.createdAt} className={styles.timeago} />
                     </div>
                     <p className={styles.description}>{post?.description}</p>
