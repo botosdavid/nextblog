@@ -14,7 +14,7 @@ export const GET_POSTS = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation AddPost($title: String!, $description: String!, $image: String!){
-    addPost(title: $title, description: $description, image: $image)
+  mutation AddPost($title: String!, $description: String!, $image: String!, $category: String!){
+    addPost(title: $title, description: $description, image: $image, category: $category)
   }
 `

@@ -13,13 +13,15 @@ export interface Post {
 export interface PostInput {
     title: string,
     description: string,
-    image: string 
+    image: string,
+    category: Category
 }
 
 export enum PostInputActionType { 
     TYPE_TITLE,
     TYPE_DESCRIPTION,
     TYPE_IMAGE,
+    TYPE_CATEGORY,
     RESET
 }
 

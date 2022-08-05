@@ -5,6 +5,9 @@ import { ADD_POST } from '../../utils/queries';
 import styles from './Postinput.module.css';
 import {Category, PostInputActionType} from '../../utils/types';
 import type { PostInput, PostInputAction } from '../../utils/types';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
 
 const isValidImage = (url: string) => {
    return (url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null);
@@ -13,7 +16,8 @@ const isValidImage = (url: string) => {
 const initialState: PostInput = {
     title: '',
     description: '',
-    image: ''
+    image: '',
+    category: Category.SPORT,
 }
 
 const reducer = (state: PostInput , action: PostInputAction) => {
@@ -24,6 +28,8 @@ const reducer = (state: PostInput , action: PostInputAction) => {
             return {...state, description: action.payload }
         case PostInputActionType.TYPE_IMAGE:
             return {...state, image: action.payload }
+        case PostInputActionType.TYPE_CATEGORY:
+            return {...state, category: action.payload as Category }
         case PostInputActionType.RESET:
             return initialState;
         default: return state;
@@ -44,13 +50,14 @@ const Postinput = () => {
             variables: {
                 title: state.title,
                 description: state.description,
-                image: state.image
+                image: state.image,
+                category: state.category
             },
         });
         refetch();
         dispatch({ 
             type: PostInputActionType.RESET, 
-            payload: ''
+            payload: '',
         })
     }
     
@@ -72,11 +79,18 @@ const Postinput = () => {
                         })
                     }
                 />
-                <select className={styles.select}>
+                <Select value={state.category} label={state.category}
+                    style={{height: '2rem', borderRadius: '1rem', fontSize: '0.7rem'}}
+                    onChange={(e) => dispatch({ 
+                        type: PostInputActionType.TYPE_CATEGORY,
+                        payload: e.target.value
+                    })}>
                     { Object.values(Category).map((key) => (
-                    <option value={key} key={key}>{key}</option>
+                        <MenuItem style={{fontSize: '0.7rem'}} 
+                            value={key} key={key}>{key}
+                        </MenuItem>
                     ))}
-                </select>
+                </Select>
             </div>
             {state.title && 
                 <textarea className={styles.textarea}

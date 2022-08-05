@@ -12,7 +12,8 @@ const resolvers = {
             const post = new Post({
                 title: args.title, 
                 description: args.description,
-                image: args.image
+                image: args.image,
+                category: args.category
             });
             await post.save();
             return args.title

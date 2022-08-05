@@ -12,6 +12,7 @@
   border-radius: 1rem;
   padding: 2.5rem;
   width: 80%;
+  gap: 3rem;
 }
 
 .postscontainer {
@@ -34,7 +35,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 1rem;
   }
   .sidebarcontainer h3{
     margin: 0.5rem;
@@ -44,7 +44,6 @@
 .sidebarcontainer {
   width: 10%;
   color:rgb(145, 145, 145);
-  margin-right: 3rem;
 }
 
 .sidebarcontainer h3 {

@@ -13,7 +13,7 @@ const typeDefs = gql`
         category: String,
     }
     type Mutation { 
-        addPost(title: String!, description: String!, image: String!): String!
+        addPost(title: String!, description: String!, image: String!, category: String!): String!
     }
 `
 

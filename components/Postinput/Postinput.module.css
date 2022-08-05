@@ -13,6 +13,7 @@
 .titlecontainer{
     display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
 .titleinput {
@@ -28,7 +29,6 @@
     border-radius: 1rem;
     cursor: pointer;
     padding: 0.4rem 0.8rem;
-    margin-right: 1rem;
 }
 
 .textarea {
@@ -43,14 +43,6 @@
 .imageupload {
     border-radius: 1rem;
     max-height: 20rem;
-}
-
-.select {
-    padding: 1rem;
-    color: black;
-    background-color: transparent;
-    font-size: 1rem;
-    margin-left: 1rem;
 }
 
 @media screen and (max-width: 800px) {
