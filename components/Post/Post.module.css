@@ -61,14 +61,14 @@
     font-size: 0.7rem;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
     .container {
-        width: 45%;
+        width: 47.5%;
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
     .container {
-        width: 90%;
+        width: 100%;
     }
 }

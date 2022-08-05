@@ -1,34 +1,50 @@
 .body {
   min-height: 90vh;
-  padding: 3rem 7rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0rem;
 }
 
 .container {
   background-color: white;
   display: flex;
   border-radius: 1rem;
-  padding: 3rem;
+  padding: 2.5rem;
+  width: 80%;
 }
 
 .postscontainer {
-  background-color: white;
-  border-radius: 1rem;
+  width: 90%;
   min-height: 35rem;
   display: flex;
-  gap: 3rem;
+  gap: 3rem 5% ;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
-@media screen and (max-width: 700px) {
-  .body {
-    padding: 2rem;
+@media screen and (max-width: 800px) {
+  .container {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebarcontainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+  .sidebarcontainer h3{
+    margin: 0.5rem;
   }
 }
 
 .sidebarcontainer {
-  width: 100%;
-  color:rgb(145, 145, 145)
+  width: 10%;
+  color:rgb(145, 145, 145);
+  margin-right: 3rem;
 }
 
 .sidebarcontainer h3 {

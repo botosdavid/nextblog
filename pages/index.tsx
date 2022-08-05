@@ -34,7 +34,8 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
       <div className={styles.container}>
         <div className={styles.sidebarcontainer}>
           { Object.values(Category).map((key) => (
-            <h3 onClick={() => setCategory(key)}
+            <h3 onClick={() => setCategory(key)} 
+              key={key}
               className={(category===key ? styles.selected : '') }>
                 {key}
               </h3>
