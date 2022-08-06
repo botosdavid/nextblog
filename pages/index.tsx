@@ -8,6 +8,7 @@ import { GET_POSTS } from '../utils/queries';
 import Postinput from '../components/Postinput/Postinput';
 import { useMemo, useState } from 'react';
 import { Category } from '../utils/types';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 interface HomeProps { 
   posts: PostType[]
@@ -21,6 +22,7 @@ const filter = (posts: PostType[], category: Category) => {
 const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
   const [category, setCategory] = useState(Category.ALL);
   const filteredPosts = useMemo(() => filter(posts, category), [category]);
+  const [postList] = useAutoAnimate<any>();
 
   return (
     <div className={styles.body}>
@@ -42,7 +44,7 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
           ))}
         </div>
 
-        <div className={styles.postscontainer}>
+        <div className={styles.postscontainer} ref={postList}>
           {filteredPosts?.map((post: PostType, index) => (
             <Post post={post} key={index}/>
           ))}

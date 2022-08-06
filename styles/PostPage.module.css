@@ -11,7 +11,7 @@
     background-color: white;
     border-radius: 1rem;
     width: 80%;
-    min-height: 30rem;
+    min-height: 35rem;
     overflow: hidden;
 }
 
@@ -23,4 +23,32 @@
 
 .infocontainer {
     padding: 2rem 12rem;
+}
+
+.titlecontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categorycontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeago {
+    color: #898989;
+}
+
+.title {
+    margin: 0;
+    
+}
+
+.description {
+    margin-top: 2rem;
+    word-spacing: 1px;
+    font-size: 1.2rem;
+    line-height: 2.5rem;
 }

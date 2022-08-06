@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import { ApolloClient, InMemoryCache, ApolloProvider, DefaultOptions } from '@apollo/client';
 
 const defaultOptions: DefaultOptions = {
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </ApolloProvider>
   )
 }

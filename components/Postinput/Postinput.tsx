@@ -107,6 +107,7 @@ const Postinput = () => {
             {state.title && state.description &&
                 <input className={styles.titleinput} 
                     placeholder=' Image Url'
+                    value={state.image}
                     onChange={(e) => 
                         dispatch({ 
                             type: PostInputActionType.TYPE_IMAGE, 

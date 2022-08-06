@@ -17,10 +17,15 @@ const PostPage = ({ post }: PostPageProps) => {
             <div className={styles.container}>
                 <img src={post.image || defaultPostImage} className={styles.image}/>
                 <div className={styles.infocontainer}>
-                    <h2 className={styles.title}>{post.title}</h2>
-                    <b><small>Category:</small> {post.category}</b>
+                    <div className={styles.titlecontainer}>
+                        <h1 className={styles.title}>{post.title}</h1>
+                        <div className={styles.categorycontainer}>
+                            <small>Category</small>
+                            <b>{post.category}</b>
+                        </div>
+                    </div>
+                    <TimeAgo date={post.createdAt} className={styles.timeago} />
                     <p className={styles.description}>{post.description}</p>
-                    <TimeAgo date={post.createdAt} />
                 </div>
             </div>
         </div>

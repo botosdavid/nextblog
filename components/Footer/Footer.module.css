@@ -1,0 +1,24 @@
+
+.container {
+    background-color: rgb(51, 51, 51);
+    width: 100vw;
+    height: 20vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 0rem;
+}
+
+.infocontainer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+}
