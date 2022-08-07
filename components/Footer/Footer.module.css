@@ -2,12 +2,12 @@
 .container {
     background-color: rgb(51, 51, 51);
     width: 100vw;
-    height: 20vh;
+    min-height: 20vh;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 6rem 0rem;
+    padding: 4rem 0rem;
 }
 
 .infocontainer {
@@ -21,4 +21,10 @@
 
 .title {
     margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .infocontainer {
+        width: 70%;
+    }
 }

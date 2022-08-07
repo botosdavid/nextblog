@@ -21,7 +21,7 @@ const filter = (posts: PostType[], category: Category) => {
 
 const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
   const [category, setCategory] = useState(Category.ALL);
-  const filteredPosts = useMemo(() => filter(posts, category), [category]);
+  const filteredPosts = useMemo(() => filter(posts, category), [category, posts]);
   const [postList] = useAutoAnimate<any>();
 
   return (

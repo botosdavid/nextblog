@@ -16,10 +16,10 @@
 }
 
 .postscontainer {
-  width: 90%;
+  max-width: 90%;
   min-height: 35rem;
   display: flex;
-  gap: 3rem 5% ;
+  gap: 3rem 5%;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
