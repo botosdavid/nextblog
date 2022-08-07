@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
+import { SessionProvider } from "next-auth/react"
 import { ApolloClient, InMemoryCache, ApolloProvider, DefaultOptions } from '@apollo/client';
 
 const defaultOptions: DefaultOptions = {
@@ -21,13 +22,15 @@ export const client = new ApolloClient({
   defaultOptions: defaultOptions
 });
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-    <ApolloProvider client={client}>
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
-    </ApolloProvider>
+    <SessionProvider session={session}>
+      <ApolloProvider client={client}>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </ApolloProvider>
+    </SessionProvider>
   )
 }
 
