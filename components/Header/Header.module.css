@@ -64,15 +64,27 @@
     display: flex;
 }
 
+.menuitem {
+    display: flex;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.menuitemlabel {
+    margin: 0;
+}
+
 @media screen and (max-width: 800px) {
     .infocontainer {
         width: 95%;
     }
+    .menuitemlabel {
+        display: none;
+    }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 350px) {
     .nav {
-        font-size: 0.6rem;
         gap: 1rem;
     }
 }

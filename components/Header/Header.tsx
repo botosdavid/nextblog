@@ -2,6 +2,8 @@ import { NextPage } from 'next';
 import Link from 'next/link'
 import styles from './Header.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
+import  { FiTag, FiUser, FiMail } from 'react-icons/fi';
+import { ReactNode } from 'react';
 
 
 const Header: NextPage = () => {
@@ -11,15 +13,14 @@ const Header: NextPage = () => {
             <div className={styles.infocontainer}>
                 <h3>Next Blog</h3>
                 <nav className={styles.nav}>
-                    <Link href='/about'>About</Link>
-                    <Link href='/categories'>Categories</Link>
-                    <Link href='/pricing'>Pricing</Link>
+                    <MenuItem Icon={<FiTag />} link='price' label='Price' />
+                    <MenuItem Icon={<FiUser />} link='profile' label='Profile' />
+                    <MenuItem Icon={<FiMail />} link='contact' label='Contact' />
                 </nav>
                 <div className={styles.userinfobuttoncontainer}>
                     { session && 
                     <div className={styles.userinfocontainer}>
                         <img src={session?.user?.image || ''} className={styles.userimage}/>
-
                         <div className={styles.userinfos}>
                             <h5 className={styles.username}>{session?.user?.name}</h5>
                             <h6 className={styles.useremail}>{session?.user?.email}</h6>
@@ -27,10 +28,25 @@ const Header: NextPage = () => {
                     </div> }
                     <ButtonAuth />
                 </div>
-                
-                
             </div>
         </div>
+    )
+}
+
+interface MenuItemProps {
+    Icon: ReactNode,
+    link: string,
+    label: string
+}
+
+const MenuItem = ({Icon, link, label}: MenuItemProps) => {
+    return (
+        <Link href={`/${link}`}>
+            <div className={styles.menuitem}>
+                <p className={styles.menuitemlabel}>{label}</p>
+                {Icon}
+            </div>
+        </Link>
     )
 }
 
