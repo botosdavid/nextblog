@@ -24,6 +24,7 @@ const PostPage = ({ post }: PostPageProps) => {
                             <b>{post.category}</b>
                         </div>
                     </div>
+                    <p className={styles.timeago}>By {post.authoremail}</p>
                     <TimeAgo date={post.createdAt} className={styles.timeago} />
                     <p className={styles.description}>{post.description}</p>
                 </div>

@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
+import { ReactNode } from 'react';
 import Link from 'next/link'
 import styles from './Header.module.css';
 import { useSession, signIn, signOut } from "next-auth/react";
 import  { FiTag, FiUser, FiMail } from 'react-icons/fi';
-import { ReactNode } from 'react';
 
 
 const Header: NextPage = () => {

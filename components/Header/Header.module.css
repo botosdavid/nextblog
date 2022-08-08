@@ -62,12 +62,14 @@
 
 .userinfobuttoncontainer {
     display: flex;
+    align-items: center;
 }
 
 .menuitem {
     display: flex;
     gap: 0.4rem;
     cursor: pointer;
+    align-items: center;
 }
 
 .menuitemlabel {
@@ -81,9 +83,19 @@
     .menuitemlabel {
         display: none;
     }
+    .userinfos {
+        display: none;
+    }
+    .userinfocontainer {
+        padding: 0rem 1rem;
+    }
+    .userimage {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
     .nav {
         gap: 1rem;
     }

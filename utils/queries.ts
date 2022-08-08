@@ -21,6 +21,7 @@ export const GET_POST =  gql`
         description
         category
         createdAt
+        authoremail
       }
     }
 `

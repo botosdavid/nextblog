@@ -6,8 +6,9 @@ export interface Post {
     image: string,
     createdAt: string,
     category: Category
-    author?: string,
+    authoremail?: string,
     likes?: string
+
 }
 
 export interface PostInput {

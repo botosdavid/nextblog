@@ -6,7 +6,7 @@ const postSchema = new Schema({
     image: String,
     createdAt: String,
     category: String,
-    // author: String,
+    authoremail: String,
 })
 
 postSchema.set('timestamps', true);
