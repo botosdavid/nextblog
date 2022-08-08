@@ -5,6 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 
 const Header: NextPage = () => {
+    const { data: session } = useSession();
     return (
         <div className={styles.container}>
             <div className={styles.infocontainer}>
@@ -14,7 +15,20 @@ const Header: NextPage = () => {
                     <Link href='/categories'>Categories</Link>
                     <Link href='/pricing'>Pricing</Link>
                 </nav>
-                <ButtonAuth />
+                <div className={styles.userinfobuttoncontainer}>
+                    { session && 
+                    <div className={styles.userinfocontainer}>
+                        <img src={session?.user?.image || ''} className={styles.userimage}/>
+
+                        <div className={styles.userinfos}>
+                            <h5 className={styles.username}>{session?.user?.name}</h5>
+                            <h6 className={styles.useremail}>{session?.user?.email}</h6>
+                        </div>
+                    </div> }
+                    <ButtonAuth />
+                </div>
+                
+                
             </div>
         </div>
     )
