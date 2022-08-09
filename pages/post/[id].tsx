@@ -4,11 +4,14 @@ import { GET_POST } from '../../utils/queries';
 import { Post } from '../../utils/types';
 import { client } from '../_app';
 import TimeAgo from 'react-timeago';
+import { Session, unstable_getServerSession } from 'next-auth';
+import { options } from '../api/auth/[...nextauth]';
 
 const defaultPostImage = 'https://media.istockphoto.com/photos/writing-a-blog-blogger-influencer-reading-text-on-screen-picture-id1198931639?k=20&m=1198931639&s=612x612&w=0&h=1OjzKK3oXsuHkX9Fhro-e_fU-aSgCaV4swBai80HLx0='
 
 interface PostPageProps {
-    post: Post
+    post: Post,
+    usersession: Session,
 } 
 
 const PostPage = ({ post }: PostPageProps) => {
@@ -39,9 +42,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         query: GET_POST, 
         variables: { id }
     });
+    const session = await unstable_getServerSession(context.req, context.res, options);
     return { 
         props: {
-            post: post.data.getPost
+            post: post.data.getPost,
+            usersession: session
         }
     }
 }

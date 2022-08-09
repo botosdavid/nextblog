@@ -1,13 +1,12 @@
-import { NextPage } from 'next';
 import { ReactNode } from 'react';
 import Link from 'next/link'
 import styles from './Header.module.css';
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import  { FiTag, FiUser, FiMail } from 'react-icons/fi';
+import { Session } from 'next-auth';
+import { HomeProps } from '../../pages/index';
 
-
-const Header: NextPage = () => {
-    const { data: session } = useSession();
+const Header = ({usersession}: HomeProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.infocontainer}>
@@ -18,15 +17,15 @@ const Header: NextPage = () => {
                     <MenuItem Icon={<FiMail />} link='contact' label='Contact' />
                 </nav>
                 <div className={styles.userinfobuttoncontainer}>
-                    { session && 
+                    { usersession && 
                     <div className={styles.userinfocontainer}>
-                        <img src={session?.user?.image || ''} className={styles.userimage}/>
+                        <img src={usersession?.user?.image || ''} className={styles.userimage}/>
                         <div className={styles.userinfos}>
-                            <h5 className={styles.username}>{session?.user?.name}</h5>
-                            <h6 className={styles.useremail}>{session?.user?.email}</h6>
+                            <h5 className={styles.username}>{usersession?.user?.name}</h5>
+                            <h6 className={styles.useremail}>{usersession?.user?.email}</h6>
                         </div>
                     </div> }
-                    <ButtonAuth />
+                    <ButtonAuth session={usersession} />
                 </div>
             </div>
         </div>
@@ -50,8 +49,11 @@ const MenuItem = ({Icon, link, label}: MenuItemProps) => {
     )
 }
 
-const ButtonAuth = () => {
-    const { data: session } = useSession();
+interface ButtonProps {
+    session: Session
+}
+
+const ButtonAuth = ({ session }: ButtonProps) => {
     if(session)
     return <button onClick={() => signOut()} className={styles.button}>LogOut</button>
     return <button onClick={() => signIn()} className={styles.button}>LogIn</button>

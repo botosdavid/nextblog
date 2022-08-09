@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Post from '../components/Post/Post';
@@ -9,9 +9,12 @@ import Postinput from '../components/Postinput/Postinput';
 import { useMemo, useState } from 'react';
 import { Category } from '../utils/types';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
+import { Session, unstable_getServerSession } from 'next-auth';
+import {options} from '../pages/api/auth/[...nextauth]';
 
-interface HomeProps { 
-  posts: PostType[]
+export interface HomeProps { 
+  posts: PostType[],
+  usersession: Session
 }
 
 const filter = (posts: PostType[], category: Category) => {
@@ -19,10 +22,10 @@ const filter = (posts: PostType[], category: Category) => {
   return posts.filter((post) => post.category === category);
 }
 
-const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
+const Home: NextPage<HomeProps> = ({ posts, usersession }: HomeProps) => {
   const [category, setCategory] = useState(Category.ALL);
   const filteredPosts = useMemo(() => filter(posts, category), [category, posts]);
-  const [postList] = useAutoAnimate<any>();
+  const [postList] = useAutoAnimate<HTMLDivElement>();
 
   return (
     <div className={styles.body}>
@@ -32,7 +35,7 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Postinput />
+      <Postinput session={usersession}/>
       <div className={styles.container}>
         <div className={styles.sidebarcontainer}>
           { Object.values(Category).map((key) => (
@@ -54,11 +57,13 @@ const Home: NextPage<HomeProps> = ({ posts }: HomeProps) => {
   )
 }
 
-export const getServerSideProps =  async () => {
+export const getServerSideProps: GetServerSideProps =  async (context) => {
   const { data } = await client.query({query: GET_POSTS});
+  const session = await unstable_getServerSession(context.req, context.res, options);
   return {
     props: {
-      posts: data.getPosts
+      posts: data.getPosts,
+      usersession: session,
     }
   }
 }

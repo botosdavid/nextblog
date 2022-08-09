@@ -5,6 +5,7 @@ import Footer from '../components/Footer/Footer';
 import { SessionProvider } from "next-auth/react"
 import { ApolloClient, InMemoryCache, ApolloProvider, DefaultOptions } from '@apollo/client';
 
+
 const defaultOptions: DefaultOptions = {
   watchQuery: {
     fetchPolicy: 'no-cache',
@@ -26,7 +27,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <ApolloProvider client={client}>
-        <Header />
+        <Header {...pageProps}/>
         <Component {...pageProps} />
         <Footer />
       </ApolloProvider>
