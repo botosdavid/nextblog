@@ -5,6 +5,11 @@ const typeDefs = gql`
         getPosts: [Post]
         getPost(id: String): Post
     }
+    type User {
+        name: String,
+        email: String,
+        image: String,
+    }
     type Post { 
         _id: String,
         title: String,
@@ -12,10 +17,10 @@ const typeDefs = gql`
         image: String,
         createdAt: String,
         category: String,
-        authoremail: String
+        userId: User
     }
     type Mutation { 
-        addPost(title: String!, description: String!, image: String!, category: String!): String!
+        addPost(title: String!, description: String!, image: String!, category: String!, userId: String!): String!
     }
 `
 

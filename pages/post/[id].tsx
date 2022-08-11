@@ -18,18 +18,27 @@ const PostPage = ({ post }: PostPageProps) => {
     return (
         <div className={styles.body}>
             <div className={styles.container}>
-                <img src={post.image || defaultPostImage} className={styles.image}/>
+                <img src={post?.image || defaultPostImage} className={styles.image}/>
                 <div className={styles.infocontainer}>
                     <div className={styles.titlecontainer}>
-                        <h1 className={styles.title}>{post.title}</h1>
+                        <h1 className={styles.title}>{post?.title}</h1>
                         <div className={styles.categorycontainer}>
                             <small>Category</small>
-                            <b>{post.category}</b>
+                            <b>{post?.category}</b>
                         </div>
                     </div>
-                    <p className={styles.timeago}>By {post.authoremail}</p>
-                    <TimeAgo date={post.createdAt} className={styles.timeago} />
-                    <p className={styles.description}>{post.description}</p>
+                    <div className={styles.authorcontainer}>
+                        <div className={styles.authorinfocontainer}>
+                            <p className={styles.authorinfo}>By <b>{post?.userId.name}</b></p>
+                            <img src={post.userId.image} className={styles.authorimage}/>
+                        </div>
+                        <a href={`mailto:${post.userId.email}?`} 
+                            className={styles.authorinfo}>
+                            {post.userId.email}
+                        </a>
+                    </div>
+                    <TimeAgo date={post?.createdAt} className={styles.timeago} />
+                    <p className={styles.description}>{post?.description}</p>
                 </div>
             </div>
         </div>

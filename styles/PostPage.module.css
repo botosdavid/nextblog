@@ -53,6 +53,32 @@
     line-height: 2.5rem;
 }
 
+.authorcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0rem;
+    font-size: 0.8rem;
+}
+
+.authorinfocontainer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.authorimage {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+}
+
+.authorinfo {
+    margin: 0;
+    color: #898989;
+    padding: 0.3rem 0rem;
+}
+
 @media screen and (max-width: 1200px) {
     .infocontainer {
         padding: 2rem 5rem;

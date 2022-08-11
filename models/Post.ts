@@ -1,4 +1,6 @@
 import { Schema, model, models } from 'mongoose';
+import mongoose from 'mongoose';
+import User from './User';
 
 const postSchema = new Schema({
     title: String,
@@ -6,7 +8,10 @@ const postSchema = new Schema({
     image: String,
     createdAt: String,
     category: String,
-    authoremail: String,
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: User
+    },
 })
 
 postSchema.set('timestamps', true);

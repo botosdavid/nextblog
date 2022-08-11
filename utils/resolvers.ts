@@ -7,7 +7,7 @@ const resolvers = {
                 .sort({_id: -1});
         },
         getPost: async (_: any, { id }: any) => {
-            return await Post.findById(id);
+            return await Post.findById(id).populate('userId').exec();
         },
     },
     Mutation: {
@@ -16,12 +16,13 @@ const resolvers = {
                 title: args.title, 
                 description: args.description,
                 image: args.image,
-                category: args.category
+                category: args.category,
+                userId: args.userId
             });
             await post.save();
             return args.title
         }
-    }
+    },
 };
 
 export default resolvers;

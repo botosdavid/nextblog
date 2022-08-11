@@ -7,7 +7,7 @@ import {Category, PostInputActionType} from '../../utils/types';
 import type { PostInput, PostInputAction } from '../../utils/types';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { Session } from 'next-auth';
+import { User } from 'next-auth';
 
 const isValidImage = (url: string) => {
    return (url.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null);
@@ -36,8 +36,13 @@ const reducer = (state: PostInput , action: PostInputAction) => {
     }
 }
 
+export interface ComplexSession { 
+    expired: string,
+    user: User
+}
+
 export interface PostInputProps { 
-    session: Session
+    session: ComplexSession,
 }
 
 const Postinput = ({ session }: PostInputProps) => {
@@ -52,10 +57,8 @@ const Postinput = ({ session }: PostInputProps) => {
     const handleAddPost = async () => {
         await addPost({
             variables: {
-                title: state.title,
-                description: state.description,
-                image: state.image,
-                category: state.category
+                ...state,
+                userId: session.user.id,
             },
         });
         refetch();

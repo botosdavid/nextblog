@@ -11,10 +11,11 @@ import { Category } from '../utils/types';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { Session, unstable_getServerSession } from 'next-auth';
 import {options} from '../pages/api/auth/[...nextauth]';
+import { ComplexSession } from '../components/Postinput/Postinput';
 
 export interface HomeProps { 
   posts: PostType[],
-  usersession: Session
+  usersession: ComplexSession
 }
 
 const filter = (posts: PostType[], category: Category) => {

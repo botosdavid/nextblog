@@ -25,6 +25,14 @@ export const options = {
         })
       // ...add more providers here
   ],
+  callbacks: {
+    session: async ({ session, user }: any) => {
+      return {
+        ...session,
+        user: user,
+      };
+    },
+  },
 }
 
 export default NextAuth(options)

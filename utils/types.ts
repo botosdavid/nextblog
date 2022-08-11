@@ -6,9 +6,13 @@ export interface Post {
     image: string,
     createdAt: string,
     category: Category
-    authoremail?: string,
-    likes?: string
+    userId: User,
+}
 
+export interface User {
+    name: string,
+    email: string,
+    image: string,
 }
 
 export interface PostInput {

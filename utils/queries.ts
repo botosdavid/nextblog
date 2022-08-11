@@ -21,13 +21,17 @@ export const GET_POST =  gql`
         description
         category
         createdAt
-        authoremail
+        userId {
+          name
+          email
+          image
+        }
       }
     }
 `
 
 export const ADD_POST = gql`
-  mutation AddPost($title: String!, $description: String!, $image: String!, $category: String!){
-    addPost(title: $title, description: $description, image: $image, category: $category)
+  mutation AddPost($title: String!, $description: String!, $image: String!, $category: String!, $userId: String!){
+    addPost(title: $title, description: $description, image: $image, category: $category, userId: $userId)
   }
 `
