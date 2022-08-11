@@ -1,3 +1,5 @@
+import { User as NextAuthUser } from 'next-auth';
+
 export interface Post { 
     __typename: string,
     _id: string,
@@ -40,4 +42,9 @@ export enum Category {
     SPORT = 'Sport',
     FOOD = 'Food',
     TECH = 'Tech',
+}
+
+export interface ComplexSession { 
+    expires: string,
+    user: NextAuthUser,
 }

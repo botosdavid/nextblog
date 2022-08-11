@@ -9,9 +9,9 @@ import Postinput from '../components/Postinput/Postinput';
 import { useMemo, useState } from 'react';
 import { Category } from '../utils/types';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { Session, unstable_getServerSession } from 'next-auth';
+import { unstable_getServerSession } from 'next-auth';
 import {options} from '../pages/api/auth/[...nextauth]';
-import { ComplexSession } from '../components/Postinput/Postinput';
+import { ComplexSession } from '../utils/types';
 
 export interface HomeProps { 
   posts: PostType[],

@@ -10,7 +10,6 @@ interface PostProps {
 }
 
 const Post = ({ post }: PostProps) => {
-    const createdAt = new Date(post.createdAt);
     return (
         <Link href={`/post/${post._id}`}>
             <div className={styles.container}>

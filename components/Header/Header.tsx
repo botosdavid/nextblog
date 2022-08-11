@@ -3,8 +3,8 @@ import Link from 'next/link'
 import styles from './Header.module.css';
 import { signIn, signOut } from "next-auth/react";
 import  { FiTag, FiUser, FiMail } from 'react-icons/fi';
-import { Session } from 'next-auth';
 import { HomeProps } from '../../pages/index';
+import { ComplexSession } from '../../utils/types';
 
 const Header = ({usersession}: HomeProps) => {
     return (
@@ -50,7 +50,7 @@ const MenuItem = ({Icon, link, label}: MenuItemProps) => {
 }
 
 interface ButtonProps {
-    session: Session
+    session: ComplexSession
 }
 
 const ButtonAuth = ({ session }: ButtonProps) => {
