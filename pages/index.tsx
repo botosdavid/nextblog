@@ -1,17 +1,16 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Post from '../components/Post/Post';
 import {client} from './_app';
 import type { Post as PostType }  from '../utils/types';
 import { GET_POSTS } from '../utils/queries';
 import Postinput from '../components/Postinput/Postinput';
 import { useMemo, useState } from 'react';
 import { Category } from '../utils/types';
-import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { unstable_getServerSession } from 'next-auth';
 import {options} from '../pages/api/auth/[...nextauth]';
 import { ComplexSession } from '../utils/types';
+import Postlist from '../components/Postlist/Postlist';
 
 export interface HomeProps { 
   posts: PostType[],
@@ -26,7 +25,6 @@ const filter = (posts: PostType[], category: Category) => {
 const Home: NextPage<HomeProps> = ({ posts, usersession }: HomeProps) => {
   const [category, setCategory] = useState(Category.ALL);
   const filteredPosts = useMemo(() => filter(posts, category), [category, posts]);
-  const [postList] = useAutoAnimate<HTMLDivElement>();
 
   return (
     <div className={styles.body}>
@@ -48,11 +46,7 @@ const Home: NextPage<HomeProps> = ({ posts, usersession }: HomeProps) => {
           ))}
         </div>
 
-        <div className={styles.postscontainer} ref={postList}>
-          {filteredPosts?.map((post: PostType, index) => (
-            <Post post={post} key={index}/>
-          ))}
-        </div>
+        <Postlist posts={filteredPosts}/>
       </div>
     </div>
   )
