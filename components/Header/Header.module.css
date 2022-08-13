@@ -76,6 +76,10 @@
     margin: 0;
 }
 
+.logo {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 800px) {
     .infocontainer {
         width: 95%;

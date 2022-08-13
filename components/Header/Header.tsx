@@ -10,7 +10,9 @@ const Header = ({usersession}: HomeProps) => {
     return (
         <div className={styles.container}>
             <div className={styles.infocontainer}>
-                <h3>Next Blog</h3>
+                <Link href='/'>
+                    <h3 className={styles.logo}>Next Blog</h3>
+                </Link>
                 <nav className={styles.nav}>
                     <MenuItem Icon={<FiTag />} link='price' label='Price' />
                     <MenuItem Icon={<FiUser />} link='profile' label='Profile' />
@@ -19,7 +21,10 @@ const Header = ({usersession}: HomeProps) => {
                 <div className={styles.userinfobuttoncontainer}>
                     { usersession && 
                     <div className={styles.userinfocontainer}>
-                        <img src={usersession?.user?.image || ''} className={styles.userimage}/>
+                        <img src={usersession?.user?.image || ''} 
+                            referrerPolicy="no-referrer" 
+                            className={styles.userimage}
+                        />
                         <div className={styles.userinfos}>
                             <h5 className={styles.username}>{usersession?.user?.name}</h5>
                             <h6 className={styles.useremail}>{usersession?.user?.email}</h6>

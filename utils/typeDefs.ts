@@ -4,6 +4,7 @@ const typeDefs = gql`
     type Query {
         getPosts: [Post]
         getPost(id: String): Post
+        getUserPosts(id: String): [Post]
     }
     type User {
         name: String,

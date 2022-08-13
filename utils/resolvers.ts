@@ -9,16 +9,13 @@ const resolvers = {
         getPost: async (_: any, { id }: any) => {
             return await Post.findById(id).populate('userId').exec();
         },
+        getUserPosts: async (_: any, { id }: any) => {
+            return await Post.find({ userId: id });
+        }
     },
     Mutation: {
         addPost: async (parent: any, args: any) => {
-            const post = new Post({
-                title: args.title, 
-                description: args.description,
-                image: args.image,
-                category: args.category,
-                userId: args.userId
-            });
+            const post = new Post({ ...args });
             await post.save();
             return args.title
         }
